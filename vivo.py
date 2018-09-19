@@ -1,30 +1,31 @@
 import csv
 
-arquivoCsv = open(str(input('Arquivo .csv Airodump-ng: ')), 'r')
-print('\n    Rede     Senha')
+with  open(str(input('Arquivo .csv Airodump-ng: '))) as arquivoCsv:
 
-try:
-    reader = csv.reader(arquivoCsv)
+    print('\n    Rede     Senha')
 
-    for linha in reader:
+    try:
+        reader = csv.reader(arquivoCsv)
 
-        if not linha: # Verifica se a lista está vazia
-            pass
-        else:
+        for linha in reader:
 
-            if linha[0] == 'Station MAC': # Sai do for porque é onde acaba as redes wireless do arquivo .csv
-                break
+            if not linha: # Verifica se a lista está vazia
+                pass
             else:
-                dicio = { 'BSSID':linha[0],'ESSID':linha[13] } # Dicionário que contem o nome e MAC da rede wirilless
 
-                if dicio['BSSID'] == 'BSSID': # Ignora a primeira linha do arquivo .csv
-                    pass
+                if linha[0] == 'Station MAC': # Sai do for porque é onde acaba as redes wireless do arquivo .csv
+                    break
                 else:
-                    if 'VIVO-' in dicio['ESSID']: # Apenas mostra as redes VIVO-
-                        senha = dicio['BSSID'][3:-5].replace(':', '')+dicio['ESSID'][6:]
+                    dicio = { 'BSSID':linha[0],'ESSID':linha[13] } # Dicionário que contem o nome e MAC da rede wirilless
 
-                        print(dicio['ESSID'], senha)
+                    if dicio['BSSID'] == 'BSSID': # Ignora a primeira linha do arquivo .csv
+                        pass
+                    else:
+                        if 'VIVO-' in dicio['ESSID']: # Apenas mostra as redes VIVO-
+                            senha = dicio['BSSID'][3:-5].replace(':', '')+dicio['ESSID'][6:]
 
-finally:
-    print('\n')
-    arquivoCsv.close()
+                            print(dicio['ESSID'], senha)
+
+    finally:
+        print('\n')
+        arquivoCsv.close()

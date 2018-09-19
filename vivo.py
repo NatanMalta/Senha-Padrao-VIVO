@@ -6,11 +6,11 @@ try:
     reader = csv.reader(arquivoCsv)
 
     for linha in reader:
-        
-        if not linha:
+
+        if not linha: # Verifica se a lista está vazia
             pass
         else:
-            
+
             if linha[0] == 'Station MAC':
                 break
             else:
@@ -22,8 +22,6 @@ try:
 
                     if 'VIVO-' in dicio['ESSID']:
                         print(dicio['ESSID'], dicio['BSSID'][3:].replace(':',''))
-                    
-                
-            
+
 finally:
     arquivoCsv.close()

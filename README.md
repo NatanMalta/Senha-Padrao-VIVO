@@ -1,4 +1,4 @@
-# Senha Pradrao VIVO-####
+# Senha Pradrão VIVO-####
 
 Esse script python monta a senha padrão Wifi de rotedores distribuido pela vivo. 
 
